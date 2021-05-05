@@ -6,7 +6,13 @@ import java.util.List;
 
 public class CalculerStatistiqueEntrainement {
 
-    public StatistiqueEntrainement calcul( List<Joueur> joueurs ) {
+    public List<StatistiqueEntrainement> calcul( List<Joueur> joueurs ) {
+        return joueurs.stream().map(joueur -> {
+
+        } );
+    }
+
+    public double calculTauxPresence(Joueur joueur, List<Entrainement> entrainements) {
 
     }
 
