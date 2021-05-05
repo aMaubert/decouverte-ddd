@@ -3,7 +3,9 @@ package com.example.project.use_cases;
 import com.example.project.models.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 class NumberFaitDeJeuPerMatchPeriod {
@@ -24,17 +26,23 @@ public class CalculerStatistiquesMatch {
         return matchs.stream()
                      .map(match -> {
                             List<FaitDeJeu> faitDeJeuList = faitDeJeuRepository.recupereFaitDeJeuParIdDeMatch(match.id);
-                            List<FaitDeJeu> butMarques =  faitDeJeuList.stream()
-                                                                        .filter(faitDeJeu -> faitDeJeu.type.equals(FaitDeJeuType.BUT_MARQUE) )
-                                                                        .collect(Collectors.toList());
+                            var statsParFaitsDeJeu = calculStatsParFaitsDeJeu(faitDeJeuList);
 
-//                            butMarques.stream()
-//                                .reduce(new ArrayList<NumberFaitDeJeuPerMatchPeriod>(),
-//                                        (faitDeJeuPerMatchPeriods, faitDeJeu) -> );
-
-                         return new StatistiqueMatch( );
+                         return new StatistiqueMatch( statsParFaitsDeJeu );
                      })
                      .collect(Collectors.toList());
+    }
+
+    private Map<MatchPeriod, Map<FaitDeJeuType, Integer>> calculStatsParFaitsDeJeu(List<FaitDeJeu> faitsDeJeu) {
+        Map<MatchPeriod, Map<FaitDeJeuType, Integer>> ret = new HashMap<>();
+        for (MatchPeriod period : MatchPeriod.values()) {
+            for(FaitDeJeuType type : FaitDeJeuType.values()) {
+                Map<FaitDeJeuType, Integer> mapFaitsDeJeu = new HashMap<FaitDeJeuType, Integer>();
+                mapFaitsDeJeu.put(type, 0);
+                ret.put(period, mapFaitsDeJeu);
+            }
+        }
+        return ret;
     }
 
 
