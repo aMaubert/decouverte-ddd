@@ -8,15 +8,16 @@ import com.example.project.models.FaitDeJeuRepository;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class MockFaitDeJeuxRepository implements FaitDeJeuRepository {
+public class MockFaitDeJeuRepository implements FaitDeJeuRepository {
     public final RepositoryMock<FaitDeJeu>  repositoryMock;
 
-    public MockFaitDeJeuxRepository() {
+    public MockFaitDeJeuRepository() {
         this.repositoryMock = new RepositoryMock<FaitDeJeu>();
     }
 
     @Override
     public List<FaitDeJeu> recupereFaitDeJeuParIdDeMatch(int matchId) {
+
         return repositoryMock.stock.stream().collect(Collectors.toList());
     }
 }
