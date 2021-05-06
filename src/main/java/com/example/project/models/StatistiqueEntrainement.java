@@ -10,4 +10,12 @@ public class StatistiqueEntrainement {
         this.joueur = joueur;
         this.tauxAbsence = tauxAbsence;
     }
+
+    public Joueur getJoueur() {
+        return joueur;
+    }
+
+    public double getTauxAbsence() {
+        return tauxAbsence;
+    }
 }

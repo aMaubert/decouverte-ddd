@@ -7,8 +7,13 @@ import java.util.stream.Collectors;
 
 public class CalculerStatistiqueEntrainement {
 
-    AbsenceRepository absenceRepository;
-    EntrainementRepository entrainementRepository;
+    private final AbsenceRepository absenceRepository;
+    private final EntrainementRepository entrainementRepository;
+
+    public CalculerStatistiqueEntrainement(AbsenceRepository absenceRepository, EntrainementRepository entrainementRepository) {
+        this.absenceRepository = absenceRepository;
+        this.entrainementRepository = entrainementRepository;
+    }
 
     public List<StatistiqueEntrainement> calcul(List<Joueur> joueurs ) {
         return joueurs.stream().map(joueur -> {
