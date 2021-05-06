@@ -15,6 +15,7 @@ public class CalculerStatistiqueEntrainement {
         this.entrainementRepository = entrainementRepository;
     }
 
+
     public List<StatistiqueEntrainement> calcul(List<Joueur> joueurs ) {
         return joueurs.stream().map(joueur -> {
              int nbAbsences = absenceRepository.recupereNombreAbsenceDunJoueur(joueur.id);

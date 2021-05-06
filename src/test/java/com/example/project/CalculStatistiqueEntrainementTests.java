@@ -2,58 +2,65 @@ package com.example.project;
 
 import com.example.project.mocks.MockAbsenceRepository;
 import com.example.project.mocks.MockEntrainementRepository;
-import com.example.project.mocks.RepositoryMock;
 import com.example.project.models.*;
 import com.example.project.use_cases.CalculerStatistiqueEntrainement;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.junit.MockitoJUnitRunner;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
+@RunWith(MockitoJUnitRunner.class)
 public class CalculStatistiqueEntrainementTests {
 
-    private static CalculerStatistiqueEntrainement calculerStatistiqueEntrainement;
-    private static MockAbsenceRepository mockAbsenceRepository;
-    private static MockEntrainementRepository mockEntrainementRepository;
-    private static List<Joueur> joueurs;
+    private MockEntrainementRepository mockEntrainementRepository;
+    private MockAbsenceRepository mockAbsenceRepository;
 
-    @BeforeAll
-    public static void setup() {
-
-        CalculStatistiqueEntrainementTests.joueurs = Arrays.asList(new Joueur(1), new Joueur(2), new Joueur(3));
-
-        CalculStatistiqueEntrainementTests.mockAbsenceRepository = new MockAbsenceRepository();
-        CalculStatistiqueEntrainementTests.mockEntrainementRepository = new MockEntrainementRepository();
-
-
-        CalculStatistiqueEntrainementTests.calculerStatistiqueEntrainement = new CalculerStatistiqueEntrainement(
-                CalculStatistiqueEntrainementTests.mockAbsenceRepository,
-                CalculStatistiqueEntrainementTests.mockEntrainementRepository
-        );
-
+    @Before
+    public void setup() {
+        this.mockEntrainementRepository = new MockEntrainementRepository();
+        this.mockAbsenceRepository = new MockAbsenceRepository();
     }
 
     @Test
-    public void testCalcul() {
+    public void devraitAvoir0EnTauxAbsence() {
 
-        CalculStatistiqueEntrainementTests.mockEntrainementRepository.repositoryMock.create(new Entrainement(CalculStatistiqueEntrainementTests.joueurs));
-        CalculStatistiqueEntrainementTests.mockEntrainementRepository.repositoryMock.create(new Entrainement(CalculStatistiqueEntrainementTests.joueurs));
+        // Given :
+        var joueurs = Arrays.asList(new Joueur(1), new Joueur(2), new Joueur(3));
+        var calculerStatistiqueEntrainement = new CalculerStatistiqueEntrainement(mockAbsenceRepository, mockEntrainementRepository);
 
-        Joueur bernard = CalculStatistiqueEntrainementTests.joueurs.get(0);
-        CalculStatistiqueEntrainementTests.mockAbsenceRepository.repositoryMock.create(new Absence(bernard));
+        mockEntrainementRepository.repositoryMock.create(new Entrainement(joueurs));
+        mockEntrainementRepository.repositoryMock.create(new Entrainement(joueurs));
 
+        //When
+        var statistiqueEntrainements = calculerStatistiqueEntrainement.calcul(joueurs);
+        //Then
+        statistiqueEntrainements.forEach( statistiqueEntrainement -> {
 
-        var statistiqueEntrainements = CalculStatistiqueEntrainementTests.calculerStatistiqueEntrainement.calcul(CalculStatistiqueEntrainementTests.joueurs);
+            Assert.assertEquals(statistiqueEntrainement.getTauxAbsence(), 0.0, 0.0);
+        });
+    }
 
+    @Test
+    public void devraitAvoir1EnTauxAbsence() {
 
-        var statBernard = statistiqueEntrainements.stream().filter( statistiqueEntrainement -> statistiqueEntrainement.getJoueur().id == bernard.id).findFirst();
+        // Given :
+        var joueurs = Arrays.asList(new Joueur(1), new Joueur(2));
+        var calculerStatistiqueEntrainement = new CalculerStatistiqueEntrainement(mockAbsenceRepository, mockEntrainementRepository);
 
-        Assertions.assertTrue(statBernard.isPresent());
+        mockEntrainementRepository.repositoryMock.create(new Entrainement(joueurs));
 
-        Assertions.assertEquals(statBernard.get(), new StatistiqueEntrainement(bernard, 50.0));
+        joueurs.forEach(joueur -> mockAbsenceRepository.repositoryMock.create(new Absence(joueur)) );
+
+        //When
+        var statistiqueEntrainements = calculerStatistiqueEntrainement.calcul(joueurs);
+        //Then
+        statistiqueEntrainements.forEach( statistiqueEntrainement -> {
+
+            Assert.assertEquals(statistiqueEntrainement.getTauxAbsence(), 1.0, 0.0);
+        });
     }
 
 
