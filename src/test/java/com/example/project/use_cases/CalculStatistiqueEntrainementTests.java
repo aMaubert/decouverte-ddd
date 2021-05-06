@@ -1,4 +1,4 @@
-package com.example.project;
+package com.example.project.use_cases;
 
 import com.example.project.mocks.MockAbsenceRepository;
 import com.example.project.mocks.MockEntrainementRepository;
