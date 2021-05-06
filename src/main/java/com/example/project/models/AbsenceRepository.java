@@ -1,6 +1,8 @@
 package com.example.project.models;
 
 
+import java.util.List;
+
 public interface AbsenceRepository {
-    int recupereNombreAbsenceDunJoueur(int joueurId);
+    List<Absence> recupereLesAbsences();
 }

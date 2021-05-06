@@ -1,5 +1,7 @@
 package com.example.project.models;
 
+import java.util.List;
+
 public interface EntrainementRepository {
-	int recupereNombreEntrainement(int joueurId);
+	List<Entrainement> recupereLesEntrainement();
 }

@@ -35,7 +35,7 @@ public class CalculStatistiqueEntrainementTests {
         mockEntrainementRepository.repositoryMock.create(new Entrainement(joueurs));
 
         //When
-        var statistiqueEntrainements = calculerStatistiqueEntrainement.calcul(joueurs);
+        var statistiqueEntrainements = calculerStatistiqueEntrainement.calculStatistiques(joueurs);
         //Then
         statistiqueEntrainements.forEach( statistiqueEntrainement -> {
 
@@ -55,12 +55,45 @@ public class CalculStatistiqueEntrainementTests {
         joueurs.forEach(joueur -> mockAbsenceRepository.repositoryMock.create(new Absence(joueur)) );
 
         //When
-        var statistiqueEntrainements = calculerStatistiqueEntrainement.calcul(joueurs);
+        var statistiqueEntrainements = calculerStatistiqueEntrainement.calculStatistiques(joueurs);
         //Then
         statistiqueEntrainements.forEach( statistiqueEntrainement -> {
 
             Assert.assertEquals(statistiqueEntrainement.getTauxAbsence(), 1.0, 0.0);
         });
+    }
+
+    @Test
+    public void devraitExploserQuandIlYA0Entrainement() {
+        // Given :
+        var joueurs = Arrays.asList(new Joueur(1), new Joueur(2));
+        var calculerStatistiqueEntrainement = new CalculerStatistiqueEntrainement(mockAbsenceRepository, mockEntrainementRepository);
+
+        Assert.assertThrows( "Le nombre d'entrainements doit être plus grand que 0",IllegalArgumentException.class, () -> {
+             calculerStatistiqueEntrainement.calculStatistiques(joueurs);
+        });
+
+    }
+
+    @Test
+    public void devraitExploserQuandLeNombreDAbsencesEstPlusEleveesQueLeNombreDEntrainements() {
+        // Given :
+        var joueurs = Arrays.asList(new Joueur(1), new Joueur(2));
+        var calculerStatistiqueEntrainement = new CalculerStatistiqueEntrainement(mockAbsenceRepository, mockEntrainementRepository);
+
+        //1 entrainement
+        mockEntrainementRepository.repositoryMock.create(new Entrainement(joueurs));
+
+        for (Joueur joueur: joueurs) {
+            //2 absences
+            mockAbsenceRepository.repositoryMock.create(new Absence(joueur));
+            mockAbsenceRepository.repositoryMock.create(new Absence(joueur));
+        }
+
+        Assert.assertThrows( "Le nombre d'entrainements ne peut pas être inférieur au nombre d'absences",IllegalArgumentException.class, () -> {
+            calculerStatistiqueEntrainement.calculStatistiques(joueurs);
+        });
+
     }
 
 
