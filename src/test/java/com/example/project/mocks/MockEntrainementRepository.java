@@ -1,10 +1,9 @@
 package com.example.project.mocks;
 
-import com.example.project.models.Entrainement;
-import com.example.project.models.EntrainementRepository;
+import com.example.project.models.statistique.joueur.Entrainement;
+import com.example.project.models.statistique.joueur.EntrainementRepository;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class MockEntrainementRepository implements EntrainementRepository {
     public final RepositoryMock<Entrainement>  repositoryMock;

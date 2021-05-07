@@ -1,7 +1,8 @@
-package com.example.project.models;
+package com.example.project.models.statistique.joueur;
+
+import com.example.project.models.statistique.StatistiqueEntrainement;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Joueur {
 	private int id;

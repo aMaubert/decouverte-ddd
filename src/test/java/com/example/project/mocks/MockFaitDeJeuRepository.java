@@ -1,9 +1,7 @@
 package com.example.project.mocks;
 
-import com.example.project.models.Entrainement;
-import com.example.project.models.EntrainementRepository;
-import com.example.project.models.FaitDeJeu;
-import com.example.project.models.FaitDeJeuRepository;
+import com.example.project.models.statistique.match.faitDeJeu.FaitDeJeu;
+import com.example.project.models.statistique.match.faitDeJeu.FaitDeJeuRepository;
 
 import java.util.List;
 import java.util.stream.Collectors;

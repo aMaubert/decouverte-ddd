@@ -1,8 +1,11 @@
-package com.example.project.models;
+package com.example.project.models.statistique.match;
+
+import com.example.project.models.statistique.match.faitDeJeu.FaitDeJeu;
+import com.example.project.models.Identifier;
 
 import java.util.List;
 
-public class Match extends Identifier{
+public class Match extends Identifier {
 
     public int id;
     public List<FaitDeJeu> faitsDeJeuList;

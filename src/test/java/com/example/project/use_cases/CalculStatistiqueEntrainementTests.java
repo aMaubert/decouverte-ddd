@@ -2,8 +2,9 @@ package com.example.project.use_cases;
 
 import com.example.project.mocks.MockAbsenceRepository;
 import com.example.project.mocks.MockEntrainementRepository;
-import com.example.project.models.*;
-import com.example.project.use_cases.CalculerStatistiqueEntrainement;
+import com.example.project.models.statistique.joueur.Absence;
+import com.example.project.models.statistique.joueur.Entrainement;
+import com.example.project.models.statistique.joueur.Joueur;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

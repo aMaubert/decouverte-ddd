@@ -1,4 +1,4 @@
-package com.example.project.models;
+package com.example.project.models.statistique.match.faitDeJeu;
 
 public enum MatchPeriod {
     PREMIER_QUART, // 15 première minutes du match

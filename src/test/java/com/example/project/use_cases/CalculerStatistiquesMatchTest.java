@@ -36,7 +36,7 @@ public class CalculerStatistiquesMatchTest extends TestCase {
 		Assert.assertTrue(!statistiquesMatch.isEmpty());
 	}*/
 
-	@Test
+	/*@Test
 	public void devraitAvoir2FaitsDeJeuPour1Match() {
 		//Given:
 		List<FaitDeJeu> faitDeJeuListMatch = Arrays.asList(new FaitDeJeu(FaitDeJeuType.BUT_MARQUE), new FaitDeJeu(FaitDeJeuType.CARTON_JAUNE));
@@ -44,5 +44,5 @@ public class CalculerStatistiquesMatchTest extends TestCase {
 		Match match = new Match(1, faitDeJeuListMatch, equipe );
 		var matchs = Arrays.asList(new Match(1, faitDeJeuListMatch, equipe));
 	}
-
+*/
 }

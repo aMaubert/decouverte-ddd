@@ -1,4 +1,7 @@
-package com.example.project.models;
+package com.example.project.models.statistique.joueur;
+
+import com.example.project.models.Identifier;
+import com.example.project.models.statistique.joueur.Joueur;
 
 import java.util.List;
 

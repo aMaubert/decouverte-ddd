@@ -8,15 +8,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-class NumberFaitDeJeuPerMatchPeriod {
-    MatchPeriod period;
-    int quantite;
-    FaitDeJeuType type;
-}
-
 public class CalculerStatistiquesMatch {
 
-    FaitDeJeuRepository faitDeJeuRepository;
+    //TODO: TO IMPLEMENT
+
+    /*FaitDeJeuRepository faitDeJeuRepository;
 
     public CalculerStatistiquesMatch(FaitDeJeuRepository faitDeJeuRepository) {
         this.faitDeJeuRepository = faitDeJeuRepository;
@@ -44,6 +40,6 @@ public class CalculerStatistiquesMatch {
         }
         return ret;
     }
-
+*/
 
 }

@@ -1,10 +1,10 @@
 package com.example.project.use_cases;
 
-import com.example.project.models.*;
+import com.example.project.models.statistique.joueur.*;
+import com.example.project.models.statistique.StatistiqueEntrainement;
+import com.example.project.models.statistique.Statistiques;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 
 public class CalculerStatistiqueEntrainement {
@@ -17,7 +17,7 @@ public class CalculerStatistiqueEntrainement {
         this.entrainementRepository = entrainementRepository;
     }
 
-    public List<StatistiqueEntrainement> calculStatistiques( List<Joueur> joueurs ) {
+    public List<StatistiqueEntrainement> calculStatistiques(List<Joueur> joueurs ) {
         List<Absence> absences = absenceRepository.recupereLesAbsences();
         List<Entrainement> entrainements = entrainementRepository.recupereLesEntrainement();
 

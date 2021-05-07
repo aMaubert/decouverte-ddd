@@ -1,7 +1,7 @@
 package com.example.project.mocks;
 
-import com.example.project.models.Match;
-import com.example.project.models.MatchRepository;
+import com.example.project.models.statistique.match.Match;
+import com.example.project.models.statistique.match.MatchRepository;
 
 import java.util.ArrayList;
 

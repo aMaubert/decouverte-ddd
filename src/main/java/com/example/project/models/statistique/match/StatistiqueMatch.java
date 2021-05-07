@@ -1,4 +1,7 @@
-package com.example.project.models;
+package com.example.project.models.statistique.match;
+
+import com.example.project.models.statistique.match.faitDeJeu.MatchPeriod;
+import com.example.project.models.statistique.match.faitDeJeu.FaitDeJeuType;
 
 import java.util.Map;
 
