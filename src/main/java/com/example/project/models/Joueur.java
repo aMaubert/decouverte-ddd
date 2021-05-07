@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Joueur {
-	public int id;
+	private int id;
 
 	public Joueur(int id) {
 		this.id = id;
@@ -12,7 +12,7 @@ public class Joueur {
 
 	public long recupererMonNombreDAbsences(List<Absence> absences) {
 		return absences.stream()
-						.filter( absence -> absence.getJoueur().id == this.id)
+						.filter( absence -> absence.getJoueur().getId() == this.getId())
 						.count() ;
 	}
 
@@ -23,13 +23,21 @@ public class Joueur {
 	}
 	public boolean estPresent(List<Joueur> joueurs) {
 		return joueurs.stream()
-				.anyMatch(joueur -> joueur.id == this.id);
+				.anyMatch(joueur -> joueur.getId() == this.getId());
 	}
 
 	public StatistiqueEntrainement computeEntrainement(List<Absence> absences, List<Entrainement> entrainements) {
 		long nbAbsencesDuJoueur = this.recupererMonNombreDAbsences(absences);
 		long nbEntrainement = this.recupererMonNombreDEntrainments(entrainements);
 
-		return new StatistiqueEntrainement(this.id, nbAbsencesDuJoueur, nbEntrainement);
+		return new StatistiqueEntrainement(this.getId(), nbAbsencesDuJoueur, nbEntrainement);
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 }
