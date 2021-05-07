@@ -1,7 +1,7 @@
 package com.example.project.mocks;
 
 import com.example.project.models.statistique.joueur.Absence;
-import com.example.project.models.statistique.joueur.AbsenceRepository;
+import com.example.project.models.AbsenceRepository;
 
 import java.util.List;
 

@@ -1,7 +1,10 @@
 package com.example.project.use_cases;
 
+import com.example.project.models.AbsenceRepository;
+import com.example.project.models.Entrainement;
+import com.example.project.models.EntrainementRepository;
 import com.example.project.models.statistique.joueur.*;
-import com.example.project.models.statistique.StatistiqueEntrainement;
+import com.example.project.models.statistique.joueur.StatistiqueEntrainement;
 import com.example.project.models.statistique.Statistiques;
 
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.example.project.models.statistique.joueur;
+package com.example.project.models;
 
 
 import com.example.project.models.statistique.joueur.Absence;

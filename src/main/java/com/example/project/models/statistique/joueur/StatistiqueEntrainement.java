@@ -1,4 +1,4 @@
-package com.example.project.models.statistique;
+package com.example.project.models.statistique.joueur;
 
 public class StatistiqueEntrainement {
 

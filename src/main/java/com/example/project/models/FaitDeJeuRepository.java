@@ -1,4 +1,4 @@
-package com.example.project.models.statistique.match.faitDeJeu;
+package com.example.project.models;
 
 import com.example.project.models.statistique.match.faitDeJeu.FaitDeJeu;
 

@@ -1,4 +1,4 @@
-package com.example.project.models.statistique.match;
+package com.example.project.models;
 
 public interface MatchRepository {
 	int recupereNombreMatch(int equipeId);

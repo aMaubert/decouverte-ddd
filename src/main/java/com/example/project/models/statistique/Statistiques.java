@@ -1,8 +1,9 @@
 package com.example.project.models.statistique;
 
 import com.example.project.models.statistique.joueur.Absence;
-import com.example.project.models.statistique.joueur.Entrainement;
+import com.example.project.models.Entrainement;
 import com.example.project.models.statistique.joueur.Joueur;
+import com.example.project.models.statistique.joueur.StatistiqueEntrainement;
 
 import java.util.ArrayList;
 import java.util.List;

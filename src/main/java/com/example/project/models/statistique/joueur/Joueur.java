@@ -1,6 +1,6 @@
 package com.example.project.models.statistique.joueur;
 
-import com.example.project.models.statistique.StatistiqueEntrainement;
+import com.example.project.models.Entrainement;
 
 import java.util.List;
 
