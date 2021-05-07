@@ -39,7 +39,7 @@ public class CalculStatistiqueEntrainementTests {
         //Then
         statistiqueEntrainements.forEach( statistiqueEntrainement -> {
 
-            Assert.assertEquals(statistiqueEntrainement.getTauxAbsence(), 0.0, 0.0);
+            Assert.assertEquals(statistiqueEntrainement.getTauxAbsences(), 0.0, 0.0);
         });
     }
 
@@ -58,8 +58,7 @@ public class CalculStatistiqueEntrainementTests {
         var statistiqueEntrainements = calculerStatistiqueEntrainement.calculStatistiques(joueurs);
         //Then
         statistiqueEntrainements.forEach( statistiqueEntrainement -> {
-
-            Assert.assertEquals(statistiqueEntrainement.getTauxAbsence(), 1.0, 0.0);
+            Assert.assertEquals(1.0, statistiqueEntrainement.getTauxAbsences(), 0.0);
         });
     }
 
