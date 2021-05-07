@@ -21,13 +21,6 @@ public class CalculerStatistiqueEntrainement {
         List<Absence> absences = absenceRepository.recupereLesAbsences();
         List<Entrainement> entrainements = entrainementRepository.recupereLesEntrainement();
 
-        List<StatistiqueEntrainement> statistiqueEntrainements = new ArrayList<>();
-
-        for (Joueur joueur : joueurs) {
-            var statistiqueEntrainement = joueur.computeEntrainement(absences, entrainements);
-            statistiqueEntrainements.add(statistiqueEntrainement);
-        }
-
-        return statistiqueEntrainements;
+        return new Statistiques().computeStatistiquesEntrainements(joueurs, entrainements, absences);
     }
 }
