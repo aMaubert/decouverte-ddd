@@ -24,16 +24,10 @@ public class CalculerStatistiqueEntrainement {
         List<StatistiqueEntrainement> statistiqueEntrainements = new ArrayList<>();
 
         for (Joueur joueur : joueurs) {
-            var statistiqueEntrainement = new StatistiqueEntrainement(joueur, absences, entrainements);
-            statistiqueEntrainements.add(statistiqueEntrainement.computeStatistiqueUnJoueur());
+            var statistiqueEntrainement = joueur.computeEntrainement(absences, entrainements);
+            statistiqueEntrainements.add(statistiqueEntrainement);
         }
 
         return statistiqueEntrainements;
-
     }
-
-
-
-
-
 }
